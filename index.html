@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Basic Security Headers (handled mainly by hosting, noted here for reference)
+       - Use HTTPS (SSL)
+       - Content-Security-Policy
+       - X-Frame-Options
+       - X-Content-Type-Options
+  -->
+
+  <title>Fresh Fruit Bowl | Healthy Roadside Fruit Salads</title>
+  <meta name="description" content="Fresh Fruit Bowl offers fresh fruit salads, juices, and combos. Order easily via WhatsApp. Clean, healthy, and affordable." />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fdfbf7; /* soft off-white for fresh & clean look */
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff6f3c, #ff3d68);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.2s; }
+    .section:nth-child(2) { animation-delay: 0.4s; }
+    .section:nth-child(3) { animation-delay: 0.6s; }
+    .section:nth-child(4) { animation-delay: 0.8s; }
+    .section:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section h2 {
+      color: #ff5757;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .section h2::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: #ff914d;
+      display: block;
+      margin-top: 5px;
+      border-radius: 2px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .menu-item h3 {
+      margin-top: 0;
+      color: #ff914d;
+    }
+
+    .order-box {
+      background: linear-gradient(135deg, #ffe6d8, #fff1e8);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,145,77,0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(255,145,77,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,145,77,0); }
+    }
+
+    .order-box a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .order-box a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #111, #222);
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #f1f1f1;
+      }
+      header {
+        background: linear-gradient(135deg, #ff784e, #d94a4a);
+      }
+      .menu-item {
+        background: #1e1e1e;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+      }
+      .order-box {
+        background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+      }
+      footer {
+        background: #000;
+      }
+    }
+      header {
+        background: linear-gradient(135deg, #ff784e, #d94a4a);
+      }
+      .menu-item {
+        background: #1e1e1e;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+      }
+      .order-box {
+        background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+      }
+      footer {
+        background: #000;
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff914d;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+  </style>
+
+  <script>
+    function toggleStatus(status) {
+      const el = document.getElementById('today-status');
+      el.textContent = status;
+      el.className = status.toLowerCase().replace(/ /g, '-');
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>🍓 Fresh Fruit Bowl</h1>
+    <p>Healthy • Fresh • Hygienic • Roadside Fruit Salads & Juices</p>
+  </header>
+
+  <div class="container">
+
+    <section class="section">
+      <h2>About Us</h2>
+      <p>
+        Fresh Fruit Bowl is your local roadside fruit salad and juice stall. We serve freshly cut seasonal fruits and natural juices every day. Our goal is to provide healthy food quickly, even during busy hours.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Today's Status</h2>
+      <p id="today-status" style="font-size:1.2rem; font-weight:bold; background:#eafff3; color:#1b7a4b; display:inline-block; padding:10px 18px; border-radius:30px;">✨ Special Items Available Today</p>
+      <div style="margin-top:15px;">
+        <button onclick="toggleStatus('✅ Available Now')">Available</button>
+        <button onclick="toggleStatus('❌ Sold Out')">Sold Out</button>
+        <button onclick="toggleStatus('✨ Special Items Available Today')">Special</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Our Menu & Prices</h2>
+      <p class="note">Carefully curated bowls made fresh every day</p>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <h3>🍉 Mixed Fruit Salad</h3>
+          <p>Fresh seasonal fruits</p>
+          <strong>₹60</strong>
+        </div>
+        <div class="menu-item">
+          <h3>🥭 Premium Fruit Bowl</h3>
+          <p>With dry fruits & honey</p>
+          <strong>₹100</strong>
+        </div>
+        <div class="menu-item">
+          <h3>🥤 Fresh Juice</h3>
+          <p>Orange / Apple / Pineapple</p>
+          <strong>₹50</strong>
+        </div>
+        <div class="menu-item">
+          <h3>🍍 Fruit Combo</h3>
+          <p>Fruit bowl + juice</p>
+          <strong>₹120</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Order Online</h2>
+      <div class="order-box">
+        <p>Too busy to wait? Order directly on WhatsApp.</p>
+        <a href="https://wa.me/0000000000?text=Hello%20Fresh%20Fruit%20Bowl,%20I%20want%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
+        <p class="note">(Replace the number with your business WhatsApp number)</p>
+      </div>
+    </section>
+
+    
+
+    <section class="section">
+      <h2>Today’s Fresh Fruits</h2>
+      <p>🍎 Apple • 🍌 Banana • 🍉 Watermelon • 🍍 Pineapple • ❤️ Pomegranate • 🧡 Papaya</p>
+    </section>
+
+    <section class="section">
+      <h2>Contact & Location</h2>
+      <p>📞 Phone / WhatsApp: <strong>+91 00000 00000</strong></p>
+      <p>📍 Roadside Stall – Near Main Road</p>
+      <p>🕒 Open Daily: Morning to Evening</p>
+
+      <div style="margin-top:20px; border-radius:12px; overflow:hidden; box-shadow:0 6px 15px rgba(0,0,0,0.15);">
+        <iframe
+          src="https://www.google.com/maps?q=India&output=embed"
+          width="100%"
+          height="300"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <p class="note">Tap the map to get directions. (Location can be updated anytime)</p>
+    </section>
+
+    <section class="section">
+      <h2>Customer Feedback</h2>
+      <p>Your feedback helps us improve.</p>
+      <form>
+        <input type="text" placeholder="Your Name" required /><br /><br />
+        <textarea placeholder="Your feedback" rows="4" required></textarea><br /><br />
+        <button type="submit">Submit Feedback</button>
+        <p class="note">(Feedback is for improvement only, no data stored)</p>
+      </form>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Fresh Fruit Bowl | Healthy Food, Honest Service</p>
+    <p class="note">This website is built as a static site for better security and low maintenance.</p>
+  </footer>
+
+</body>
+</html>
