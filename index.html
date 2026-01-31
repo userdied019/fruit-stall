@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Basic Security Headers (handled mainly by hosting, noted here for reference)
@@ -98,14 +98,14 @@
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
     }
 
     .menu-item {
       background: #ffffff;
       border-radius: 14px;
-      padding: 20px;
+      padding: 18px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -118,7 +118,8 @@
 
     .menu-item h3 {
       margin-top: 0;
-      color: #ff914d;
+      color: #c2410c; /* stronger color for light mode visibility */
+      font-size: 1.1rem;
     }
 
     .order-box {
@@ -170,9 +171,27 @@
     /* Dark mode support */
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #121212;
-        color: #f1f1f1;
+        background-color: #0f172a; /* deep slate */
+        color: #e5e7eb;
       }
+      header {
+        background: linear-gradient(135deg, #fb7185, #f97316);
+      }
+      .menu-item {
+        background: #020617;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      }
+      .menu-item h3 {
+        color: #fbbf24; /* bright & readable in dark */
+      }
+      .order-box {
+        background: linear-gradient(135deg, #020617, #020617);
+      }
+      footer {
+        background: #020617;
+        color: #94a3b8;
+      }
+    }
       header {
         background: linear-gradient(135deg, #ff784e, #d94a4a);
       }
